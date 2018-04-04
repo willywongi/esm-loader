@@ -1,0 +1,19 @@
+{
+  "name": "esm-loader",
+  "version": "1.0.0",
+  "description": "A http/2 server handling ECMAScript Modules to the browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "http2",
+    "esm"
+  ],
+  "author": "willywongi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "spdy": "^3.4.7"
+  }
+}
