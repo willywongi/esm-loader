@@ -2,9 +2,9 @@
   "name": "esm-loader",
   "version": "1.0.0",
   "description": "A http/2 server handling ECMAScript Modules to the browser",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "openssl genrsa -des3 -passout pass:x -out keys/server.pass.key 2048 && openssl rsa -passin pass:x -in keys/server.pass.key -out keys/server.key && rm keys/server.pass.key && openssl req -new -key keys/server.key -out keys/server.csr -subj \"/C=UK/ST=Warwickshire/L=Leamington/O=OrgName/OU=IT Department/CN=localhost\" && openssl x509 -req -sha256 -days 365 -in keys/server.csr -signkey keys/server.key -out keys/server.crt"
   },
   "keywords": [
     "http2",
@@ -13,7 +13,9 @@
   "author": "willywongi",
   "license": "ISC",
   "dependencies": {
+    "esprima": "^4.0.0",
     "express": "^4.16.3",
+    "send": "^0.16.2",
     "spdy": "^3.4.7"
   }
 }
