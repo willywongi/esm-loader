@@ -36,7 +36,7 @@ function static(root) {
 			pathname = '';
 		}
 		
-		let content = fs.readFile(path.join(root, pathname), (err, data) => {
+		fs.readFile(path.join(root, pathname), (err, data) => {
 			// => [Error: EISDIR: illegal operation on a directory, read <directory>]
 			if (err) {
 				res.statusCode = 404
@@ -66,7 +66,6 @@ function static(root) {
 					res.push(dependency.path, dependency.headers, function(err, stream) {
 						if (err) return;
 						fs.createReadStream(dependency.absPath).pipe(stream);
-						stream.end();
 					});
 				})
 				console.log(`Sending requested file: ${pathname}`);
